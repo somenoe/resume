@@ -87,20 +87,20 @@ function Resume() {
     <Document>
       <Page size="A4" style={tw('bg-white p-8')}>
         <View style={tw('mb-5 text-center')}>
-          <Text style={tw('text-xl font-bold mb-1 text-mango')}>
+          <Text style={tw('text-mango mb-1 text-xl font-bold')}>
             {DATA.personalInfo.name}
           </Text>
-          <Text style={tw('text-sm mb-0.5 text-gray-500')}>
+          <Text style={tw('mb-0.5 text-sm text-gray-500')}>
             {DATA.personalInfo.email}
           </Text>
-          <Text style={tw('text-sm mb-0.5 text-gray-500')}>
+          <Text style={tw('mb-0.5 text-sm text-gray-500')}>
             {DATA.personalInfo.phone}
           </Text>
-          <Text style={tw('text-sm mb-0.5 text-gray-500')}>
+          <Text style={tw('mb-0.5 text-sm text-gray-500')}>
             {DATA.personalInfo.location}
           </Text>
           {DATA.personalInfo.website ? (
-            <Text style={tw('text-sm mb-0.5 text-gray-500')}>
+            <Text style={tw('mb-0.5 text-sm text-gray-500')}>
               {DATA.personalInfo.website}
             </Text>
           ) : null}
@@ -108,30 +108,30 @@ function Resume() {
 
         <View style={tw('mb-4')}>
           <Text
-            style={tw('text-lg font-bold mb-2 border-b border-black pb-0.5')}
+            style={tw('mb-2 border-b border-black pb-0.5 text-lg font-bold')}
           >
             Professional Summary
           </Text>
-          <Text style={tw('text-sm leading-snug mb-0.5')}>{DATA.summary}</Text>
+          <Text style={tw('mb-0.5 text-sm leading-snug')}>{DATA.summary}</Text>
         </View>
 
         <View style={tw('mb-4')}>
           <Text
-            style={tw('text-lg font-bold mb-2 border-b border-black pb-0.5')}
+            style={tw('mb-2 border-b border-black  pb-0.5 text-lg font-bold')}
           >
             Professional Experience
           </Text>
           {DATA.experience.map((job, index) => (
             <View key={index} style={tw('mb-3')}>
-              <Text style={tw('text-base font-bold mb-0.5')}>{job.title}</Text>
+              <Text style={tw('mb-0.5 text-base font-bold')}>{job.title}</Text>
               <Text
-                style={tw('text-sm font-bold mb-0.5')}
+                style={tw('mb-0.5 text-sm font-bold')}
               >{`${job.company} - ${job.location}`}</Text>
               <Text
-                style={tw('text-xs text-gray-500 mb-1')}
+                style={tw('mb-1 text-xs text-gray-500')}
               >{`${job.startDate} - ${job.endDate}`}</Text>
               {job.responsibilities.map((responsibility, idx) => (
-                <Text key={idx} style={tw('text-sm leading-snug mb-0.5')}>
+                <Text key={idx} style={tw('mb-0.5 text-sm leading-snug')}>
                   {`• ${responsibility}`}
                 </Text>
               ))}
@@ -141,17 +141,17 @@ function Resume() {
 
         <View style={tw('mb-4')}>
           <Text
-            style={tw('text-lg font-bold mb-2 border-b border-black pb-0.5')}
+            style={tw('mb-2 border-b border-black pb-0.5 text-lg font-bold')}
           >
             Education
           </Text>
           {DATA.education.map((edu, index) => (
             <View key={index} style={tw('mb-3')}>
-              <Text style={tw('text-sm mb-1')}>{edu.degree}</Text>
+              <Text style={tw('mb-1 text-sm')}>{edu.degree}</Text>
               <Text
-                style={tw('text-sm mb-1')}
+                style={tw('mb-1 text-sm')}
               >{`${edu.school} - ${edu.location}`}</Text>
-              <Text style={tw('text-xs text-gray-500 mb-1')}>
+              <Text style={tw('mb-1 text-xs text-gray-500')}>
                 {edu.graduationDate}
               </Text>
             </View>
@@ -160,13 +160,13 @@ function Resume() {
 
         <View style={tw('mb-4')}>
           <Text
-            style={tw('text-lg font-bold mb-2 border-b border-black pb-0.5')}
+            style={tw('mb-2 border-b border-black pb-0.5 text-lg font-bold')}
           >
             Technical Skills
           </Text>
           <View style={tw('flex-row flex-wrap')}>
             {DATA.skills.map((skill, index) => (
-              <Text key={index} style={tw('text-sm mr-3 mb-1')}>
+              <Text key={index} style={tw('mb-1 mr-3 text-sm')}>
                 {`• ${skill}`}
               </Text>
             ))}

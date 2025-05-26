@@ -19,7 +19,8 @@
   "tailwindFunctions": [
     "classNames",
     "classnames",
-    "twMerge"
+    "twMerge",
+    "tw"
   ],
   "overrides": [
     {
