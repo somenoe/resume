@@ -1,10 +1,8 @@
-import { PDFViewer, Document, Page, Text, View } from '@react-pdf/renderer';
+import { Document, Page, Text, View } from '@react-pdf/renderer';
 
 import { createTw } from 'react-pdf-tailwind';
 
-export const tw = createTw({});
-
-const ResumeData = {
+const DATA = {
   personalInfo: {
     name: 'John Lemon',
     email: 'john.lemon@email.com',
@@ -83,25 +81,27 @@ const ResumeData = {
 } as const;
 
 function Resume() {
+  const tw = createTw({});
+
   return (
     <Document>
       <Page size="A4" style={tw('bg-white p-8')}>
         <View style={tw('mb-5 text-center')}>
           <Text style={tw('text-xl font-bold mb-1 text-mango')}>
-            {ResumeData.personalInfo.name}
+            {DATA.personalInfo.name}
           </Text>
           <Text style={tw('text-sm mb-0.5 text-gray-500')}>
-            {ResumeData.personalInfo.email}
+            {DATA.personalInfo.email}
           </Text>
           <Text style={tw('text-sm mb-0.5 text-gray-500')}>
-            {ResumeData.personalInfo.phone}
+            {DATA.personalInfo.phone}
           </Text>
           <Text style={tw('text-sm mb-0.5 text-gray-500')}>
-            {ResumeData.personalInfo.location}
+            {DATA.personalInfo.location}
           </Text>
-          {ResumeData.personalInfo.website ? (
+          {DATA.personalInfo.website ? (
             <Text style={tw('text-sm mb-0.5 text-gray-500')}>
-              {ResumeData.personalInfo.website}
+              {DATA.personalInfo.website}
             </Text>
           ) : null}
         </View>
@@ -112,9 +112,7 @@ function Resume() {
           >
             Professional Summary
           </Text>
-          <Text style={tw('text-sm leading-snug mb-0.5')}>
-            {ResumeData.summary}
-          </Text>
+          <Text style={tw('text-sm leading-snug mb-0.5')}>{DATA.summary}</Text>
         </View>
 
         <View style={tw('mb-4')}>
@@ -123,7 +121,7 @@ function Resume() {
           >
             Professional Experience
           </Text>
-          {ResumeData.experience.map((job, index) => (
+          {DATA.experience.map((job, index) => (
             <View key={index} style={tw('mb-3')}>
               <Text style={tw('text-base font-bold mb-0.5')}>{job.title}</Text>
               <Text
@@ -147,7 +145,7 @@ function Resume() {
           >
             Education
           </Text>
-          {ResumeData.education.map((edu, index) => (
+          {DATA.education.map((edu, index) => (
             <View key={index} style={tw('mb-3')}>
               <Text style={tw('text-sm mb-1')}>{edu.degree}</Text>
               <Text
@@ -167,7 +165,7 @@ function Resume() {
             Technical Skills
           </Text>
           <View style={tw('flex-row flex-wrap')}>
-            {ResumeData.skills.map((skill, index) => (
+            {DATA.skills.map((skill, index) => (
               <Text key={index} style={tw('text-sm mr-3 mb-1')}>
                 {`• ${skill}`}
               </Text>
@@ -179,12 +177,4 @@ function Resume() {
   );
 }
 
-function App() {
-  return (
-    <PDFViewer className="h-screen w-screen">
-      <Resume />
-    </PDFViewer>
-  );
-}
-
-export default App;
+export default Resume;
