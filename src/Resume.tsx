@@ -44,14 +44,16 @@ function Resume() {
         {/* Skills Section */}
         <View>
           <SectionHeader title="SKILLS" />
-          <View style={tw('flex-row')}>
-            <Text style={tw('text-sm font-bold')}>Design: </Text>
-            <Text style={tw('flex-1 text-sm')}>{content.skills.design}</Text>
-          </View>
-          <View style={tw('flex-row')}>
-            <Text style={tw('text-sm font-bold')}>Analysis & Control: </Text>
-            <Text style={tw('flex-1 text-sm')}>{content.skills.analysis}</Text>
-          </View>
+          {Object.entries(content.skills).map(([category, skills], index) => (
+            <View key={index} style={tw('mt-0.5 flex-row')}>
+              <Text style={tw('text-xs font-bold leading-5')}>
+                {category.charAt(0).toUpperCase() +
+                  category.slice(1).replace(/([A-Z])/g, ' $1')}
+                :{' '}
+              </Text>
+              <Text style={tw('flex-1 text-xs leading-5')}>{skills}</Text>
+            </View>
+          ))}
         </View>
 
         {/* Experience Section */}
