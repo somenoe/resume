@@ -1,180 +1,141 @@
-import { Document, Page, Text, View } from '@react-pdf/renderer';
-
+import { Document, Page, PDFViewer, Text, View } from '@react-pdf/renderer';
 import { createTw } from 'react-pdf-tailwind';
+import content from './resumeData';
 
-const DATA = {
-  personalInfo: {
-    name: 'John Lemon',
-    email: 'john.lemon@email.com',
-    phone: '(555) 123-4567',
-    location: 'San Francisco, CA',
-    website: 'https://johnlemon.dev',
-  },
-  summary:
-    'Experienced Software Engineer with 5+ years of expertise in full-stack development, specializing in React, TypeScript, and Node.js. Proven track record of building scalable web applications and leading cross-functional teams to deliver high-quality products.',
-  experience: [
-    {
-      title: 'Senior Software Engineer',
-      company: 'Tech Solutions Inc.',
-      location: 'San Francisco, CA',
-      startDate: 'January 2022',
-      endDate: 'Present',
-      responsibilities: [
-        'Led development of a React-based dashboard that increased user engagement by 40%',
-        'Implemented TypeScript across legacy codebase, reducing bugs by 30%',
-        'Mentored 3 junior developers and conducted code reviews',
-        'Collaborated with product managers to define technical requirements',
-      ],
-    },
-    {
-      title: 'Software Engineer',
-      company: 'StartupXYZ',
-      location: 'San Francisco, CA',
-      startDate: 'March 2020',
-      endDate: 'December 2021',
-      responsibilities: [
-        'Built responsive web applications using React and Node.js',
-        'Developed RESTful APIs serving 10,000+ daily active users',
-        'Optimized database queries resulting in 50% faster load times',
-        'Participated in agile development processes and sprint planning',
-      ],
-    },
-    {
-      title: 'Junior Developer',
-      company: 'Web Agency Pro',
-      location: 'Oakland, CA',
-      startDate: 'June 2019',
-      endDate: 'February 2020',
-      responsibilities: [
-        'Created custom WordPress themes and plugins for client websites',
-        'Implemented responsive designs using HTML, CSS, and JavaScript',
-        'Collaborated with designers to ensure pixel-perfect implementations',
-        'Maintained and updated existing client websites',
-      ],
-    },
-  ],
-  education: [
-    {
-      degree: 'Bachelor of Science in Computer Science',
-      school: 'University of California, Berkeley',
-      location: 'Berkeley, CA',
-      graduationDate: 'May 2019',
-    },
-  ],
-  skills: [
-    'JavaScript',
-    'TypeScript',
-    'React',
-    'Node.js',
-    'Python',
-    'PostgreSQL',
-    'MongoDB',
-    'AWS',
-    'Docker',
-    'Git',
-    'HTML/CSS',
-    'REST APIs',
-    'GraphQL',
-    'Jest',
-    'Agile/Scrum',
-  ],
-} as const;
+const tw = createTw({});
+
+function SectionHeader({ title }: { title: string }) {
+  return (
+    <Text style={tw('my-2 border-b border-black text-lg font-bold leading-5')}>
+      {title}
+    </Text>
+  );
+}
+
+function BulletPoint({ text }: { text: string }) {
+  return (
+    <View style={tw('mb-1 flex flex-row')}>
+      <Text style={tw('w-3 text-xs leading-5')}>•</Text>
+      <Text style={tw('flex-1 text-xs leading-5')}>{text}</Text>
+    </View>
+  );
+}
 
 function Resume() {
-  const tw = createTw({});
-
   return (
     <Document>
       <Page size="A4" style={tw('bg-white p-8')}>
-        <View style={tw('mb-5 text-center')}>
-          <Text style={tw('text-mango mb-1 text-xl font-bold')}>
-            {DATA.personalInfo.name}
+        {/* Header Section */}
+        <View style={tw('text-center')}>
+          <Text style={tw('text-2xl font-bold leading-5')}>
+            {content.personalInfo.name}
           </Text>
-          <Text style={tw('mb-0.5 text-sm text-gray-500')}>
-            {DATA.personalInfo.email}
+          <Text style={tw('text-xs')}>
+            {`${content.personalInfo.location} | ${content.personalInfo.phone} | ${content.personalInfo.email} | ${content.personalInfo.linkedin}`}
           </Text>
-          <Text style={tw('mb-0.5 text-sm text-gray-500')}>
-            {DATA.personalInfo.phone}
-          </Text>
-          <Text style={tw('mb-0.5 text-sm text-gray-500')}>
-            {DATA.personalInfo.location}
-          </Text>
-          {DATA.personalInfo.website ? (
-            <Text style={tw('mb-0.5 text-sm text-gray-500')}>
-              {DATA.personalInfo.website}
-            </Text>
-          ) : null}
         </View>
 
-        <View style={tw('mb-4')}>
-          <Text
-            style={tw('mb-2 border-b border-black pb-0.5 text-lg font-bold')}
-          >
-            Professional Summary
-          </Text>
-          <Text style={tw('mb-0.5 text-sm leading-snug')}>{DATA.summary}</Text>
+        {/* Summary Section */}
+        <View>
+          <SectionHeader title="SUMMARY" />
+          <Text style={tw('text-xs leading-5')}>{content.summary}</Text>
         </View>
 
-        <View style={tw('mb-4')}>
-          <Text
-            style={tw('mb-2 border-b border-black  pb-0.5 text-lg font-bold')}
-          >
-            Professional Experience
-          </Text>
-          {DATA.experience.map((job, index) => (
-            <View key={index} style={tw('mb-3')}>
-              <Text style={tw('mb-0.5 text-base font-bold')}>{job.title}</Text>
-              <Text
-                style={tw('mb-0.5 text-sm font-bold')}
-              >{`${job.company} - ${job.location}`}</Text>
-              <Text
-                style={tw('mb-1 text-xs text-gray-500')}
-              >{`${job.startDate} - ${job.endDate}`}</Text>
-              {job.responsibilities.map((responsibility, idx) => (
-                <Text key={idx} style={tw('mb-0.5 text-sm leading-snug')}>
-                  {`• ${responsibility}`}
+        {/* Skills Section */}
+        <View>
+          <SectionHeader title="SKILLS" />
+          <View style={tw('flex-row')}>
+            <Text style={tw('text-sm font-bold')}>Design: </Text>
+            <Text style={tw('flex-1 text-sm')}>{content.skills.design}</Text>
+          </View>
+          <View style={tw('flex-row')}>
+            <Text style={tw('text-sm font-bold')}>Analysis & Control: </Text>
+            <Text style={tw('flex-1 text-sm')}>{content.skills.analysis}</Text>
+          </View>
+        </View>
+
+        {/* Experience Section */}
+        <View>
+          <SectionHeader title="EXPERIENCE" />
+          {content.experience.map((job, index) => (
+            <View key={index}>
+              <View style={tw('mt-1 flex flex-row justify-between')}>
+                <Text style={tw('text-sm font-bold')}>{job.company}</Text>
+                <Text style={tw('text-sm font-bold')}>
+                  {`${job.startDate} - ${job.endDate}`}
                 </Text>
+              </View>
+              <View style={tw('mb-1 flex flex-row justify-between')}>
+                <Text style={tw('text-sm')}>{job.title}</Text>
+                <Text style={tw('text-sm italic')}>{job.location || ''}</Text>
+              </View>
+              {job.responsibilities.map((responsibility, idx) => (
+                <BulletPoint key={idx} text={responsibility} />
               ))}
             </View>
           ))}
         </View>
 
-        <View style={tw('mb-4')}>
-          <Text
-            style={tw('mb-2 border-b border-black pb-0.5 text-lg font-bold')}
-          >
-            Education
-          </Text>
-          {DATA.education.map((edu, index) => (
-            <View key={index} style={tw('mb-3')}>
-              <Text style={tw('mb-1 text-sm')}>{edu.degree}</Text>
-              <Text
-                style={tw('mb-1 text-sm')}
-              >{`${edu.school} - ${edu.location}`}</Text>
-              <Text style={tw('mb-1 text-xs text-gray-500')}>
-                {edu.graduationDate}
-              </Text>
+        {/* Projects Section */}
+        <View>
+          <SectionHeader title="PROJECTS" />
+          {content.projects.map((project, index) => (
+            <View key={index}>
+              <View style={tw('my-1 flex flex-row justify-between')}>
+                <Text style={tw('text-sm font-bold')}>
+                  {`${project.title}, `}
+                  <Text style={tw('font-normal italic')}>
+                    {project.organization}
+                  </Text>
+                </Text>
+                <Text style={tw('text-sm font-bold')}>
+                  {`${project.startDate} - ${project.endDate}`}
+                </Text>
+              </View>
+              {project.details.map((detail, idx) => (
+                <BulletPoint key={idx} text={detail} />
+              ))}
             </View>
           ))}
         </View>
 
-        <View style={tw('mb-4')}>
-          <Text
-            style={tw('mb-2 border-b border-black pb-0.5 text-lg font-bold')}
-          >
-            Technical Skills
-          </Text>
-          <View style={tw('flex-row flex-wrap')}>
-            {DATA.skills.map((skill, index) => (
-              <Text key={index} style={tw('mb-1 mr-3 text-sm')}>
-                {`• ${skill}`}
+        {/* Education Section */}
+        <View>
+          <SectionHeader title="EDUCATION" />
+          {content.education.map((edu, index) => (
+            <View key={index}>
+              <View style={tw('flex flex-row justify-between')}>
+                <Text style={tw('text-sm font-bold')}>
+                  {edu.university}
+                  <Text style={tw('font-normal')}>
+                    {edu.college ? `, ${edu.college}` : ''}
+                  </Text>
+                </Text>
+                <Text style={tw('text-sm font-bold')}>
+                  {edu.graduationDate}
+                </Text>
+              </View>
+              <View style={tw('flex flex-row justify-between')}>
+                <Text style={tw('text-sm')}>{edu.degree}</Text>
+                <Text style={tw('text-sm')}>{edu.gpa}</Text>
+              </View>
+              <Text style={tw('text-xs italic')}>
+                {`Relevant Coursework: ${edu.coursework}`}
               </Text>
-            ))}
-          </View>
+            </View>
+          ))}
         </View>
       </Page>
     </Document>
   );
 }
 
-export default Resume;
+function ResumeViewer() {
+  return (
+    <PDFViewer className="h-screen w-screen">
+      <Resume />
+    </PDFViewer>
+  );
+}
+
+export default ResumeViewer;
