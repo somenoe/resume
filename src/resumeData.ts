@@ -42,22 +42,22 @@ const resumeContent = {
     websites: ['github.com/somenoe', 'somenoe.com'],
   },
   summary:
-    'Self-motivated Software Developer with experience in full-stack development and game development. Proven ability to analyze requirements, develop solutions from scratch, and manage projects independently. Strong background in modern web technologies, real-time applications, and system integration. Passionate about creating innovative solutions and continuously learning new technologies.',
+    'Self-motivated Computer Science graduate with full-stack development experience. Proven track record of building real-time applications from scratch, integrating complex systems, and managing end-to-end software development projects. Currently pursuing game development with Unreal Engine while maintaining freelance software development work. Strong foundation in high-Performance programming and entrepreneurship, with expertise in modern web technologies and cloud deployment.',
   skills: {
     skills: [
       'Full-Stack Development',
       'Web Development',
-      'Database',
+      'Database Design',
       'UX/UI Design',
       'DevOps',
       'Linux Server',
       'Cloud Computing',
       'Cloudflare',
-      'Real-Time Applications',
+      'Real-Time System',
       'High-Performance Computing',
       'Project Management',
       'Game Development',
-      'Spreedsheet Automation',
+      'Spreadsheet Automation',
       'AI Vibe Coding!',
     ],
     languages: [
@@ -92,7 +92,7 @@ const resumeContent = {
   },
   experience: [
     {
-      title: 'Game Developer & Freelancer',
+      title: 'Game Developer',
       company: 'Self-Employed',
       location: {
         city: 'Bangkok',
@@ -106,9 +106,9 @@ const resumeContent = {
         end: {},
       },
       details: [
-        'Trying to make my dream games, which is a 3D Action RPG (Elden Ring Clone) with Unreal Engine 5 using C++ and AngelScript.',
-        'Learned a lot about game development, including project management, shader, physic, level design, art, music, sound and visual effect.',
-        'Getting Freelance software development jobs and technical trading for funding my game project.',
+        'Developing 3D Soulslike ARPG project using Unreal Engine 5, implementing advanced gameplay mechanics with C++ and AngelScript.',
+        'Gained expertise in game development pipeline including project management, shader programming, physics systems, level design, asset creation, audio design, and visual effects.',
+        // 'Securing project funding through freelance software development contracts and technical trading.',
       ],
     },
     {
@@ -130,8 +130,8 @@ const resumeContent = {
       },
       details: [
         'Supported the company in various administrative tasks, including communication with factories, managing inventory, and marketing.',
-        "Set up social media accounts, online selling apps and created content for the company's products.",
-        'Learned a lot about managing small company, import-export business, hair-related products and services.',
+        'Set up and managed social media presence, e-commerce platforms, and created marketing content for product lines.',
+        // 'Gained insights with small business operation, international trading, and beauty industry.',
       ],
     },
     {
@@ -152,12 +152,12 @@ const resumeContent = {
         },
       },
       details: [
-        "Analyzed and developed the company's internal software form scratch, which is a real-time application for managing the company's suppling, inventory, sale, delivery, and accounting.",
-        'Started with defining the requirements, then create prototypes using Google Sheets and low-code tools, and finally developed the application using Qwik.js, React.js, Next.js, PWAs, PocketBase, SQLite.',
-        "Created tool for integrating the application with the company's existing software, such as the accounting system",
-        'Used Line APIs to create a chatbot, which is integrated with my system to provide alternative way for users to interact with the system.',
-        'Seted up domain name and deployed the application on Cloudflare for front-end and VPS for back-end.',
-        'Inquired system requirements, developed, teached the operators, and dogfooding to perfect the system.',
+        "Analyzed and developed company's internal system from ground up, featuring real-time capabilities for supply chain, inventory, sales, delivery, and financial operations.",
+        'Led full software development lifecycle from requirements analysis through prototyping with Google Sheets and low-code platforms, to final implementation using modern tech stack including Qwik.js, React.js, Next.js, PWAs, PocketBase, and SQLite.',
+        'Created integration solutions connecting new system with legacy software including accounting systems.',
+        'Implemented chatbot using Line APIs, providing seamless alternative user interface for system interaction.',
+        'Managed complete deployment infrastructure including domain configuration and multi-tier deployment on Cloudflare and VPS.',
+        'Conducted stakeholder requirements gathering, delivered comprehensive user training, and implemented continuous improvement through user feedback and system optimization.',
       ],
     },
   ],
@@ -194,9 +194,9 @@ const resumeContent = {
         },
       },
       details: [
-        'This is Open University, so I can study by myself, forcing me to be self-motivated and disciplined.',
-        'Worked while studying, which helped me develop time management skills and the ability to balance multiple responsibilities.',
-        'Took extra course, reduce my study time in half and I have never fail any tests.',
+        'Pursued self-directed learning via Open University, demonstrating exceptional self-motivation and independent study.',
+        'Successfully balanced full-time employment with academic excellence, developing time management skills and handling concurrent tasks.',
+        'Completed an accelerated curriculum through additional coursework, reducing program duration by 50% while maintaining a perfect academic record.',
       ],
     },
     {
@@ -214,8 +214,8 @@ const resumeContent = {
         },
       },
       details: [
-        'Studied basic business and entrepreneurship concepts, which helped me understand how to start and manage a business.',
-        'Quit this program due to COVID-19 pandemic, due to Covid-19 pandemic, I was unable to attend classes in person and the online classes were not effective for this type of program.',
+        'Studied fundamental business principles and entrepreneurship mindset, developing comprehensive understanding of business strategy, operations, and venture development.',
+        'Program discontinuation due to COVID-19 pandemic impact on in-person learning requirements, as online format was insufficient for hands-on entrepreneurship curriculum.',
       ],
     },
   ],
@@ -235,8 +235,8 @@ const resumeContent = {
         },
       },
       details: [
-        'Participated in the national level programming competition, which is a part of the International Olympiad in Informatics (IOI).',
-        'Proficient in C/C++, solved problems using algorithm and data structure.',
+        'Competed at national level in programming competition, which is a part of the International Olympiad in Informatics (IOI) pathway.',
+        'Demonstrated advanced proficiency in C/C++ programming and problem-solving using complex algorithms and data structures.',
       ],
     },
   ],
