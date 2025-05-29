@@ -1,4 +1,11 @@
-import { Document, Page, PDFViewer, Text, View } from '@react-pdf/renderer';
+import {
+  Document,
+  Page,
+  PDFViewer,
+  Text,
+  View,
+  Link,
+} from '@react-pdf/renderer';
 import { createTw } from 'react-pdf-tailwind';
 import content from './resumeData';
 
@@ -21,6 +28,38 @@ function BulletPoint({ text }: { text: string }) {
   );
 }
 
+function DateLocationHeader({
+  title,
+  subtitle,
+  date,
+  location,
+}: {
+  title: string;
+  subtitle: string;
+  date: {
+    start: { month: string; year: number };
+    end: { month?: string; year?: number };
+  };
+  location: string;
+}) {
+  const dateString = `${date.start.month} ${date.start.year} - ${
+    date.end.month ? `${date.end.month} ${date.end.year}` : 'Present'
+  }`;
+
+  return (
+    <>
+      <View style={tw('mt-1 flex flex-row justify-between')}>
+        <Text style={tw('text-sm font-bold')}>{title}</Text>
+        <Text style={tw('text-sm font-bold')}>{dateString}</Text>
+      </View>
+      <View style={tw('mb-1 flex flex-row justify-between')}>
+        <Text style={tw('text-sm')}>{subtitle}</Text>
+        <Text style={tw('text-sm italic')}>{location}</Text>
+      </View>
+    </>
+  );
+}
+
 function Resume() {
   return (
     <Document>
@@ -31,7 +70,15 @@ function Resume() {
             {content.personalInfo.name}
           </Text>
           <Text style={tw('text-xs')}>
-            {`${content.personalInfo.location} | ${content.personalInfo.phone} | ${content.personalInfo.email} | ${content.personalInfo.linkedin}`}
+            {`${content.personalInfo.location.city}, ${content.personalInfo.location.country} | ${content.personalInfo.phone} | ${content.personalInfo.email}`}
+            {content.personalInfo.websites.map((website, index) => (
+              <Text key={index}>
+                {' | '}
+                <Link src={website} style={tw('text-blue-600')}>
+                  {website}
+                </Link>
+              </Text>
+            ))}
           </Text>
         </View>
 
@@ -46,12 +93,16 @@ function Resume() {
           <SectionHeader title="SKILLS" />
           {Object.entries(content.skills).map(([category, skills], index) => (
             <View key={index} style={tw('mt-0.5 flex-row')}>
-              <Text style={tw('text-xs font-bold leading-5')}>
-                {category.charAt(0).toUpperCase() +
-                  category.slice(1).replace(/([A-Z])/g, ' $1')}
-                :{' '}
+              {category !== 'skills' && (
+                <Text style={tw('text-xs font-bold leading-5')}>
+                  {category.charAt(0).toUpperCase() +
+                    category.slice(1).replace(/([A-Z])/g, ' $1')}
+                  :{' '}
+                </Text>
+              )}
+              <Text style={tw('flex-1 text-xs leading-5')}>
+                {Array.isArray(skills) ? skills.join(', ') : skills}
               </Text>
-              <Text style={tw('flex-1 text-xs leading-5')}>{skills}</Text>
             </View>
           ))}
         </View>
@@ -61,72 +112,76 @@ function Resume() {
           <SectionHeader title="EXPERIENCE" />
           {content.experience.map((job, index) => (
             <View key={index}>
-              <View style={tw('mt-1 flex flex-row justify-between')}>
-                <Text style={tw('text-sm font-bold')}>{job.company}</Text>
-                <Text style={tw('text-sm font-bold')}>
-                  {`${job.startDate} - ${job.endDate}`}
-                </Text>
-              </View>
-              <View style={tw('mb-1 flex flex-row justify-between')}>
-                <Text style={tw('text-sm')}>{job.title}</Text>
-                <Text style={tw('text-sm italic')}>{job.location || ''}</Text>
-              </View>
-              {job.responsibilities.map((responsibility, idx) => (
-                <BulletPoint key={idx} text={responsibility} />
-              ))}
-            </View>
-          ))}
-        </View>
-
-        {/* Projects Section */}
-        <View>
-          <SectionHeader title="PROJECTS" />
-          {content.projects.map((project, index) => (
-            <View key={index}>
-              <View style={tw('my-1 flex flex-row justify-between')}>
-                <Text style={tw('text-sm font-bold')}>
-                  {`${project.title}, `}
-                  <Text style={tw('font-normal italic')}>
-                    {project.organization}
-                  </Text>
-                </Text>
-                <Text style={tw('text-sm font-bold')}>
-                  {`${project.startDate} - ${project.endDate}`}
-                </Text>
-              </View>
-              {project.details.map((detail, idx) => (
+              <DateLocationHeader
+                title={job.company}
+                subtitle={job.title}
+                date={job.date}
+                location={`${job.location.city}, ${job.location.country}`}
+              />
+              {job.details.map((detail, idx) => (
                 <BulletPoint key={idx} text={detail} />
               ))}
             </View>
           ))}
         </View>
 
+        {/* Projects Section */}
+        {content.projects.length > 0 && (
+          <View>
+            <SectionHeader title="PROJECTS" />
+            {content.projects.map((project, index) => (
+              <View key={index}>
+                <DateLocationHeader
+                  title={`${project.title}, ${project.organization}`}
+                  subtitle=""
+                  date={project.date}
+                  location=""
+                />
+                {project.details.map((detail, idx) => (
+                  <BulletPoint key={idx} text={detail} />
+                ))}
+              </View>
+            ))}
+          </View>
+        )}
+
         {/* Education Section */}
         <View>
           <SectionHeader title="EDUCATION" />
           {content.education.map((edu, index) => (
             <View key={index}>
-              <View style={tw('flex flex-row justify-between')}>
-                <Text style={tw('text-sm font-bold')}>
-                  {edu.university}
-                  <Text style={tw('font-normal')}>
-                    {edu.college ? `, ${edu.college}` : ''}
-                  </Text>
-                </Text>
-                <Text style={tw('text-sm font-bold')}>
-                  {edu.graduationDate}
-                </Text>
-              </View>
-              <View style={tw('flex flex-row justify-between')}>
-                <Text style={tw('text-sm')}>{edu.degree}</Text>
-                <Text style={tw('text-sm')}>{edu.gpa}</Text>
-              </View>
-              <Text style={tw('text-xs italic')}>
-                {`Relevant Coursework: ${edu.coursework}`}
-              </Text>
+              <DateLocationHeader
+                title={edu.university}
+                subtitle={edu.degree}
+                date={edu.date}
+                location={edu.location}
+              />
+              {edu.details.map((detail, idx) => (
+                <BulletPoint key={idx} text={detail} />
+              ))}
             </View>
           ))}
         </View>
+
+        {/* Extracurriculars Section */}
+        {content.extracurriculars.length > 0 && (
+          <View>
+            <SectionHeader title="EXTRACURRICULARS" />
+            {content.extracurriculars.map((activity, index) => (
+              <View key={index}>
+                <DateLocationHeader
+                  title={activity.name}
+                  subtitle={activity.status}
+                  date={activity.date}
+                  location={activity.location}
+                />
+                {activity.details.map((detail, idx) => (
+                  <BulletPoint key={idx} text={detail} />
+                ))}
+              </View>
+            ))}
+          </View>
+        )}
       </Page>
     </Document>
   );

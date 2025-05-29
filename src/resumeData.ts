@@ -1,121 +1,245 @@
+/* eslint-disable quotes */
+enum Month {
+  January = 'Jan',
+  February = 'Feb',
+  March = 'Mar',
+  April = 'Apr',
+  May = 'May',
+  June = 'Jun',
+  July = 'Jul',
+  August = 'Aug',
+  September = 'Sep',
+  October = 'Oct',
+  November = 'Nov',
+  December = 'Dec',
+}
+
+interface ProjectData {
+  title: string;
+  organization: string;
+  date: {
+    start: {
+      month: Month;
+      year: number;
+    };
+    end: {
+      month?: Month;
+      year?: number;
+    };
+  };
+  details: string[];
+}
+
 const resumeContent = {
   personalInfo: {
-    name: 'Name',
-    email: 'email@gmail.com',
-    phone: '(XXX) XXX-XXXX',
-    location: 'City, State, Zip',
-    linkedin: 'linkedin.com/in/username/',
+    name: 'Pridsadang Pansiri',
+    email: 'psd@somenoe.com',
+    phone: '(+66) 062 083 4594',
+    location: {
+      city: 'Bangkok',
+      country: 'Thailand',
+    },
+    websites: ['github.com/somenoe', 'somenoe.com'],
   },
   summary:
-    'Mechanical Engineering student with hands-on experience in computational analysis, robotics, and engineering design. Proven track record of improving system performance through data analysis and algorithm optimization, with 82% precision improvements at Argonne National Laboratory. Skilled in CAD software, programming languages including Python and C++, and leading multidisciplinary engineering teams on complex projects ranging from rocket engines to robotic systems.',
-  education: [
-    {
-      degree:
-        'Bachelor of Science in Mechanical Engineering; Minor in Electrical Engineering, Spanish',
-      university: 'University of XXXXX',
-      college: 'XXXXX College of Engineering',
-      gpa: 'Cumulative GPA: 4.0/4.0',
-      graduationDate: 'Expected Grad Date',
-      coursework:
-        'Fluid Mechanics, Thermodynamics, Design for Manufacturability, Solid Mechanics, Dynamics, Electrical Circuits',
-    },
-  ],
+    'Self-motivated Software Developer with experience in full-stack development and game development. Proven ability to analyze requirements, develop solutions from scratch, and manage projects independently. Strong background in modern web technologies, real-time applications, and system integration. Passionate about creating innovative solutions and continuously learning new technologies.',
+  skills: {
+    skills: [
+      'Full-Stack Development',
+      'Web Development',
+      'Database',
+      'UX/UI Design',
+      'DevOps',
+      'Linux Server',
+      'Cloud Computing',
+      'Cloudflare',
+      'Real-Time Applications',
+      'High-Performance Computing',
+      'Project Management',
+      'Game Development',
+      'Spreedsheet Automation',
+      'AI Vibe Coding!',
+    ],
+    languages: [
+      'C',
+      'C++',
+      'Python',
+      'SQL',
+      'TypeScript',
+      'JavaScript',
+      'HTML',
+      'CSS',
+      'Java',
+      'Bash',
+      'Batch Script',
+      'AngelScript',
+    ],
+    tools: [
+      'Git',
+      'Docker',
+      'SQLite',
+      'React.js',
+      'Node.js',
+      'Tailwind CSS',
+      'React Native',
+      'Next.js',
+      'QwikJS',
+      'Line APIs',
+      'PWAs',
+      'PocketBase',
+      'Unreal Engine',
+    ],
+  },
   experience: [
     {
-      title: 'Course Grader',
-      company: 'University',
-      location: 'Location',
-      startDate: 'August 2024',
-      endDate: 'Present',
-      responsibilities: [
-        'Grading homework for an introductory fluid mechanics course, reviewing and maintaining in-depth knowledge of fluid properties, systems, and interactions',
+      title: 'Game Developer & Freelancer',
+      company: 'Self-Employed',
+      location: {
+        city: 'Bangkok',
+        country: 'Thailand',
+      },
+      date: {
+        start: {
+          month: Month.January,
+          year: 2024,
+        },
+        end: {},
+      },
+      details: [
+        'Trying to make my dream games, which is a 3D Action RPG (Elden Ring Clone) with Unreal Engine 5 using C++ and AngelScript.',
+        'Learned a lot about game development, including project management, shader, physic, level design, art, music, sound and visual effect.',
+        'Getting Freelance software development jobs and technical trading for funding my game project.',
       ],
     },
     {
-      title: 'Science Undergraduate Laboratory Intern',
-      company: 'Argonne National Laboratory',
-      location: 'Lemont, IL',
-      startDate: 'May 2024',
-      endDate: 'August 2024',
-      responsibilities: [
-        'Increased precision by 82% and run time by 69% on a post-processing python script detecting undesirable behavior in sustainable fuel combustion testing through analysis of pressure transducer data',
-        'Identified the start of compression on Rapid Compression Machine experiments within 0.1ms by fitting experimental pressure curves to models of isentropic compression based on Linear Variable Differential Transformer (LVDT) data',
-        'Compared results from pressure and LVDT datasets to evaluate how to account for noise and piston seating time while detecting asynchronous behavior, improving accuracy by 90%',
+      title: 'Back Office',
+      company: 'Yanapol Professional Co., Ltd.',
+      location: {
+        city: 'Bangkok',
+        country: 'Thailand',
+      },
+      date: {
+        start: {
+          month: Month.October,
+          year: 2023,
+        },
+        end: {
+          month: Month.January,
+          year: 2024,
+        },
+      },
+      details: [
+        'Supported the company in various administrative tasks, including communication with factories, managing inventory, and marketing.',
+        "Set up social media accounts, online selling apps and created content for the company's products.",
+        'Learned a lot about managing small company, import-export business, hair-related products and services.',
       ],
     },
     {
-      title: 'Robotics Team Mentor',
-      company: 'XXXXX Middle School',
-      location: 'Location',
-      startDate: 'October 2022',
-      endDate: 'May 2023',
-      responsibilities: [
-        'Mentored a team of 12 middle schoolers in concepts including engineering design and coding',
-        'Coordinated with faculty and members of the school board to allocate resources and competition materials',
+      title: 'Software Developer',
+      company: 'Kung Anantakij Co., Ltd.',
+      location: {
+        city: 'Chachoengsao',
+        country: 'Thailand',
+      },
+      date: {
+        start: {
+          month: Month.August,
+          year: 2022,
+        },
+        end: {
+          month: Month.September,
+          year: 2023,
+        },
+      },
+      details: [
+        "Analyzed and developed the company's internal software form scratch, which is a real-time application for managing the company's suppling, inventory, sale, delivery, and accounting.",
+        'Started with defining the requirements, then create prototypes using Google Sheets and low-code tools, and finally developed the application using Qwik.js, React.js, Next.js, PWAs, PocketBase, SQLite.',
+        "Created tool for integrating the application with the company's existing software, such as the accounting system",
+        'Used Line APIs to create a chatbot, which is integrated with my system to provide alternative way for users to interact with the system.',
+        'Seted up domain name and deployed the application on Cloudflare for front-end and VPS for back-end.',
+        'Inquired system requirements, developed, teached the operators, and dogfooding to perfect the system.',
       ],
     },
   ],
   projects: [
+    //   {
+    //     title: '',
+    //     organization: '',
+    //     date: {
+    //       start: {
+    //         month: Month.January,
+    //         year: 2023,
+    //       },
+    //       end: {
+    //         month: Month.January,
+    //         year: 2023,
+    //       },
+    //     },
+    //     details: [''],
+    //   },
+  ] as ProjectData[],
+  education: [
     {
-      title: 'Liquid Rocket Engine',
-      organization: 'Liquid Rocketry Club',
-      startDate: 'September 2024',
-      endDate: 'Present',
+      degree: 'Bachelor of Science (Computer Science)',
+      university: 'Sukhothai Thammathirat Open University',
+      location: 'Nonthaburi, Thailand',
+      date: {
+        start: {
+          month: Month.March,
+          year: 2021,
+        },
+        end: {
+          month: Month.January,
+          year: 2024,
+        },
+      },
       details: [
-        'Directing a team of three engineers in the creation of a heat transfer analysis script for the chamber of a rocket engine, using the Bartz correlation, Newton-Raphson, and 4th order Runge-Kutta methods to calculate heat transfer and gas flow properties',
-        'Collaborating with a team of four to design and manufacture an ablative sleeve using Siemens NX to decrease the thermal effects of LOX, reducing the probability of melting in the combustion chamber',
-        'Analyzing hoop, shear, and Von Mises stresses from pressure on structural features to define design specifications',
-        'Implementing a predictable failure mode via bolt shear at the nozzle retaining ring to avoid catastrophic failure',
+        'This is Open University, so I can study by myself, forcing me to be self-motivated and disciplined.',
+        'Worked while studying, which helped me develop time management skills and the ability to balance multiple responsibilities.',
+        'Took extra course, reduce my study time in half and I have never fail any tests.',
       ],
     },
     {
-      title: '6-Axis Robot Arm',
-      organization: 'American Society of Mechanical Engineers (ASME)',
-      startDate: 'September 2024',
-      endDate: 'Present',
+      degree: 'School of Entrepreneurship and Management (Entrepreneurship)',
+      university: 'Bangkok University',
+      location: 'Pathum Thani, Thailand',
+      date: {
+        start: {
+          month: Month.July,
+          year: 2018,
+        },
+        end: {
+          month: Month.August,
+          year: 2020,
+        },
+      },
       details: [
-        'Leading a group of 15 engineers designing a 6-DOF robotic arm loosely inspired by the Modern Robotics UR3 for presentation at the University of XXXXX Name-brand Engineering event',
-        'Designing robot links and joints to internally house motors, wires, encoders, and bearings to allow smooth motion of the arm',
-        'Utilizing forward and inverse kinematic calculations in Python to define current and future states, convert between the world frame and configuration space and create a visual simulation of different robot configurations',
-        'Implementing path-finding algorithms such as RRT and A* to generate safe trajectories between desired configurations',
-      ],
-    },
-    {
-      title: 'Hand-Controlled Drone',
-      organization: 'American Society of Mechanical Engineers (ASME)',
-      startDate: 'January 2024',
-      endDate: 'April 2024',
-      details: [
-        'Designed and manufactured a remote-controlled claw attachment and circuit housing using Fusion 360 and Cura, interfacing directly with the drone body and power supply, and weighing under 50g to reduce impact on battery life',
-        'Created a circuit to wirelessly transmit and receive a PWM signal to a servo motor for claw actuation up to 20m',
-      ],
-    },
-    {
-      title: 'Computer-Controlled Stoplight',
-      organization: 'Tau Beta Pi Engineering Honors Society',
-      startDate: 'February 2024',
-      endDate: 'April 2024',
-      details: [
-        'Constructed a 3ft x 1ft x 1ft stoplight model using PVC, Arduino, and incandescent bulbs',
-        'Wrote a script using C++ allowing users to control the state of the light as well as an automatic option',
-      ],
-    },
-    {
-      title: 'Easy-Boiler',
-      organization: 'Computer-Aided Design Course',
-      startDate: 'August 2023',
-      endDate: 'December 2023',
-      details: [
-        'Designed an appliance for convenient food boiling with over 12 interacting parts in Fusion 360',
-        'Conducted customer interviews and market research to identify potential market targets and product ideas, utilizing a Pugh Matrix to narrow design concepts and develop Product Design Specifications',
+        'Studied basic business and entrepreneurship concepts, which helped me understand how to start and manage a business.',
+        'Quit this program due to COVID-19 pandemic, due to Covid-19 pandemic, I was unable to attend classes in person and the online classes were not effective for this type of program.',
       ],
     },
   ],
-  skills: {
-    design:
-      'SolidWorks, Siemens NX, Fusion 360, Inventor, Arduino, Cura, JavaScript, DFM, DFA',
-    analysis: 'Python, C++, ROS, MATLAB, FEA, aPriori, Java, Microsoft Excel',
-  },
+  extracurriculars: [
+    {
+      name: 'The 14th Thailand Olympiad in Informatics',
+      status: 'Participant',
+      location: 'Bangkok, Thailand',
+      date: {
+        start: {
+          month: Month.June,
+          year: 2017,
+        },
+        end: {
+          month: Month.June,
+          year: 2017,
+        },
+      },
+      details: [
+        'Participated in the national level programming competition, which is a part of the International Olympiad in Informatics (IOI).',
+        'Proficient in C/C++, solved problems using algorithm and data structure.',
+      ],
+    },
+  ],
 } as const;
 
 export default resumeContent;
