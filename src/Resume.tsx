@@ -74,7 +74,7 @@ function Resume() {
             {content.personalInfo.websites.map((website, index) => (
               <Text key={index}>
                 {' | '}
-                <Link src={website} style={tw('text-blue-600')}>
+                <Link src={'https://' + website} style={tw('text-blue-600')}>
                   {website}
                 </Link>
               </Text>
